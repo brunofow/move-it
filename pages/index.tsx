@@ -1,15 +1,34 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Head from "next/head";
+import { ChallengeBox } from "../components/ChallengeBox";
+import { CompletedChallenges } from "../components/CompletedChallenges";
+import { Countdown } from "../components/Countdown";
+import ExperienceBar from "../components/ExperienceBar";
+import { Profile } from "../components/Profile";
+import { CountdownProvider } from "../contexts/CountdownContext";
+import styles from "../styles/pages/Home.module.css";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+function Home() {
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Início | move.it</title>
+      </Head>
+      <ExperienceBar />
 
-export default IndexPage
+      <CountdownProvider>
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <Countdown />
+          </div>
+          <div>
+            <ChallengeBox />
+          </div>
+        </section>
+      </CountdownProvider>
+    </div>
+  );
+}
+
+export default Home;
