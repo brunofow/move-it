@@ -12,7 +12,7 @@ type ChallengesContextData =  {
   currentExperience: number;
   challengesCompleted: number;
   experienceToNextLevel: number;
-  activeChallenge: ChallengeProps;
+  activeChallenge: ChallengeProps | null;
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
