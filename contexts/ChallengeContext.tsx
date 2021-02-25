@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import challenges from '../challenges.json'
 
-type ChallengesProps = {
+interface ChallengeProps {
   type: string;
   description: string;
   amount: number;
@@ -12,7 +12,7 @@ type ChallengesContextData =  {
   currentExperience: number;
   challengesCompleted: number;
   experienceToNextLevel: number;
-  activeChallenge: ChallengesProps;
+  activeChallenge: ChallengeProps;
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
@@ -29,7 +29,7 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
   const [level, setLevel] = useState(1);
   const [currentExperience, setCurrentExperience] = useState(0);
   const [challengesCompleted, setChallengesCompleted] = useState(0);
-  const [ activeChallenge, setActiveChallenge ] = useState(null);
+  const [ activeChallenge, setActiveChallenge ] = useState<ChallengeProps | null>(null);
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
